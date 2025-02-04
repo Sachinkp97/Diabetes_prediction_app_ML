@@ -39,18 +39,29 @@ def find_data_file(filename):
     if getattr(sys, "frozen", False):
         # The application is frozen.
         datadir = os.path.dirname(sys.executable)
+        print("datadir",datadir)
     else:
         # The application is not frozen.
         datadir = os.path.dirname(__file__)
+        print("data_dieeeee",datadir)
 
     return os.path.join(datadir, filename)
 
 
 def check_input(data) ->int :
-    df=pd.DataFrame(data=data,index=[0])
-    with open(find_data_file('svc.pkl'),'rb') as model:
-        p=pickle.load(model)
-    op=p.predict(df)
-    return op[0]
+    try:
+
+        print("inside_check_input")
+        df=pd.DataFrame(data=data,index=[0])
+        print("df",df)
+        with open(find_data_file('svc.pkl'),'rb') as model:
+            p=pickle.load(model)
+        print("kkkk")
+        op=p.predict(df)
+        print("output is ",op)
+        return op[0]
+    except Exception as e:
+        print(e)
+
 if __name__=='__main__':
     train()    

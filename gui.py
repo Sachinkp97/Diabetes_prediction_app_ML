@@ -143,7 +143,14 @@ class Diabetes(QWidget):
 
     def test_input(self) -> None:
         """ test for diabetes"""
-        my_dict = {"B":float(self.l1.text()), "C":float(self.l2.text()),"D":float(self.l3.text()), "E":float(self.l4.text()), "F": float(self.l5.text())}
+        # my_dict = {"B":float(self.l1.text()), "C":float(self.l2.text()),"D":float(self.l3.text()), "E":float(self.l4.text()), "F": float(self.l5.text())}
+        my_dict = {
+            "F": float(self.l5.text()),
+            "D": float(self.l3.text()),
+            "E": float(self.l4.text()),
+            "B": float(self.l1.text()),
+            "C": float(self.l2.text())
+        }
         output = diabetes.check_input(my_dict)
         #print(self.output)
         #self.setFixedSize(850, 342)
